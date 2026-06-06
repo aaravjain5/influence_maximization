@@ -1,3 +1,7 @@
+## 🔗 Live Demo
+
+[View Interactive Dashboard →](https://influence-maximization.vercel.app/)
+
 # Influence Maximization in Social Networks
 
 > Identifying the most influential nodes in a social network to maximize information spread using probabilistic diffusion models and graph algorithms.
