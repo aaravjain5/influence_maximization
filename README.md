@@ -82,25 +82,41 @@ Results and plots are saved automatically to the `/results/` folder.
 
 ## Results
 
-## Results
-
-### Greedy vs IMM Coverage
-![Coverage](influence-maximization/results/greedy_vs_imm_coverage.png)
-
-### Influence Spread Network Graph
-![Graph](influence-maximization/results/influence_spread_graph.png)
-
-### Community Influence Breakdown
-![Community](influence-maximization/results/community_influence_breakdown.png)
-
-### Algorithm Comparison
+### Algorithm Performance Comparison
 | Metric | Greedy | IMM |
 |---|---|---|
 | Influence Coverage | 55.28 nodes | 61.70 nodes |
 | Runtime | 136.60s | 0.22s |
 | Speed | baseline | **614x faster** |
-| Communities Seeded | - | 4 out of 12 |
+| Communities Seeded | — | 4 out of 12 |
 
+---
+
+### Community Influence Breakdown
+> Influence spread measured across 12 detected network communities
+
+![Community](influence-maximization/results/community_influence_breakdown.png)
+
+---
+
+### Greedy vs IMM Influence Coverage
+> IMM consistently outperforms Greedy across all seed set sizes
+
+![Coverage](influence-maximization/results/greedy_vs_imm_coverage.png)
+
+---
+
+### Influence Spread Network Graph
+> Red = Seed nodes | Orange = Influenced | Blue = Not reached
+
+![Graph](influence-maximization/results/influence_spread_graph.png)
+
+---
+
+### Runtime Comparison
+> IMM completes in 0.22s vs Greedy's 136.6s — a **614x speedup**
+
+![Runtime](influence-maximization/results/runtime_comparison.png)
 ---
 
 ## Key Findings
