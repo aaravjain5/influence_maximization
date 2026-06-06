@@ -28,7 +28,7 @@ from src.community_analysis import (
 
 # Configuration Constants
 SEEDS_COUNT_K = 10
-GREEDY_SIMULATIONS = 300
+GREEDY_SIMULATIONS = 50
 IMM_RR_SETS = 10000
 COMM_SIMULATIONS = 500
 SYNTHETIC_N = 1000
