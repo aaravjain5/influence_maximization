@@ -82,11 +82,24 @@ Results and plots are saved automatically to the `/results/` folder.
 
 ## Results
 
+## Results
+
+### Greedy vs IMM Coverage
+![Coverage](influence-maximization/results/greedy_vs_imm_coverage.png)
+
+### Influence Spread Network Graph
+![Graph](influence-maximization/results/influence_spread_graph.png)
+
+### Community Influence Breakdown
+![Community](influence-maximization/results/community_influence_breakdown.png)
+
+### Algorithm Comparison
 | Metric | Greedy | IMM |
 |---|---|---|
-| Influence Coverage | ~58% | ~61% |
-| Runtime | High | ~4x faster |
-| Approximation Guarantee | 63% of optimal | 63% of optimal |
+| Influence Coverage | 55.28 nodes | 61.70 nodes |
+| Runtime | 136.60s | 0.22s |
+| Speed | baseline | **614x faster** |
+| Communities Seeded | - | 4 out of 12 |
 
 ---
 
