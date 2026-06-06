@@ -1,0 +1,6 @@
+{
+  "name": "Social Network Influence Maximization Optimizer",
+  "description": "Interactive workspace for modeling and simulating Independent Cascade models, Greedy, and IMM algorithms in social networks.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
