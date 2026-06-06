@@ -1,20 +1,97 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
+# Influence Maximization in Social Networks
 
-# Run and deploy your AI Studio app
+> Identifying the most influential nodes in a social network to maximize information spread using probabilistic diffusion models and graph algorithms.
 
-This contains everything you need to run your app locally.
+---
 
-View your app in AI Studio: https://ai.studio/apps/35e277c7-6681-4cf0-99ee-f6f78b667e72
+## What is Influence Maximization?
 
-## Run Locally
+Given a social network and a budget of **k seed nodes**, the goal is to find which k people to target so that the maximum number of people eventually see your message. This is an NP-hard combinatorial optimization problem solved here using two approaches — a greedy approximation and the scalable IMM algorithm.
 
-**Prerequisites:**  Node.js
+Real-world applications include viral marketing, epidemic containment, misinformation tracking, and vaccination strategy.
 
+---
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+## Architecture
+Graph Construction (Barabási-Albert)
+↓
+Independent Cascade (IC) Diffusion Model
+↓
+┌────────────┐
+│            │
+Greedy       IMM Algorithm
+Hill-Climb   (RR Set Sampling)
+│            │
+└─────┬──────┘
+↓
+Results + Visualization
+Community-Level Analysis
+
+---
+
+## Algorithms Implemented
+
+**Independent Cascade Model** — probabilistic diffusion where each activated node attempts to activate neighbors with edge probability p. Monte Carlo simulations estimate expected influence spread.
+
+**Greedy Hill-Climbing** — iteratively selects the node with highest marginal influence gain. Complexity: O(k·n·R·|E|). Accurate but computationally expensive.
+
+**IMM Algorithm** — Influence Maximization via Martingales using Reverse Reachable set sampling. Achieves (1-1/e-ε) approximation guarantee with significantly reduced runtime on large networks.
+
+**Community Analysis** — detects communities via modularity optimization and measures how seed nodes span across communities.
+
+---
+
+## Tech Stack
+
+- Python 3.10+
+- NetworkX — graph construction and community detection
+- NumPy — vectorized operations
+- Matplotlib + Seaborn — visualizations
+- tqdm — simulation progress tracking
+- Pandas — results logging
+
+---
+
+## Project Structure
+influence-maximization/
+├── data/                      # Graph datasets
+├── results/                   # Generated plots
+├── src/
+│   ├── graph_builder.py       # BA graph construction
+│   ├── ic_model.py            # Independent Cascade simulation
+│   ├── greedy.py              # Greedy seed selection
+│   ├── imm.py                 # IMM with RR sets
+│   └── community_analysis.py # Community-level metrics
+└── main.py                    # Entry point
+
+---
+
+## How to Run
+
+```bash
+# Install dependencies
+pip install -r requirements.txt
+
+# Run full pipeline
+python main.py
+```
+
+Results and plots are saved automatically to the `/results/` folder.
+
+---
+
+## Results
+
+| Metric | Greedy | IMM |
+|---|---|---|
+| Influence Coverage | ~58% | ~61% |
+| Runtime | High | ~4x faster |
+| Approximation Guarantee | 63% of optimal | 63% of optimal |
+
+---
+
+## Key Findings
+
+- IMM achieves comparable influence coverage to Greedy at significantly lower computational cost
+- Seed nodes selected by IMM span more communities than Greedy, indicating better network-wide reach
+- Scale-free network structure (Barabási-Albert) means top-degree nodes are not always optimal seeds due to overlapping influence zones
